@@ -1,0 +1,20 @@
+.singleMovie {
+  &__container {
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(241, 241, 241);
+    margin: 20px auto;
+    width: 20%;
+  }
+  &__title {
+    font-size: 26px;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+  }
+  &__year {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+  }
+}

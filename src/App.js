@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Movie from "./components/Movies/Movie";
+import SearchContext from "./store/SearchContext";
+import {useState} from "react";
+import { Router } from "@reach/router";
+import SelectedMovie from "./components/Movies/SelectedMovie";
+require('dotenv').config()
 
 function App() {
+
+
+  Notification.requestPermission(function(status ){
+    console.log("Notification permission status:", status);    
+  })
+ //=== sammenligner værdien og datatypen
+  function displayNotification() {
+    if (Notification.permission === 'granted') {
+      navigator.serviceWorker.getRegistration().then(function(reg){
+        reg.showNotification('Hello world!');
+      });
+    }
+  }
+
+
+  var searchState = useState([]); //Vi har gemt et state med et array som et tomt
+  // Vores provider giver componenterne adgang til vores data
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SearchContext.Provider value={searchState}>
+      <div className="App">
+      <Router>
+        <Movie path="/"/>
+        <SelectedMovie path="/:id" />
+      </Router>
+
+
+      </div>
+
+      {/*<button onClick={() => displayNotification()}>Notify me!</button>*/}
+    </SearchContext.Provider>
   );
 }
-
 export default App;

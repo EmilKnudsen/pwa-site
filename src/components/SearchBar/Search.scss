@@ -1,0 +1,21 @@
+.search {
+  display: block;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px;
+  &__input {
+    border-right: none;
+  }
+  &__button {
+    background: none;
+    border-left: none;
+  }
+  &__header {
+    font-family: Amatic SC;
+    font-size: 60px;
+    text-align: center;
+    font-weight: 700;
+    margin: 0;
+  }
+}
